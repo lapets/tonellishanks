@@ -4,7 +4,7 @@ tonellishanks
 
 Pure-Python implementation of the `Tonelli-Shanks algorithm <https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm>`__ for calculating a square root modulo a prime.
 
-|pypi| |readthedocs|
+|pypi| |readthedocs| |actions| |coveralls|
 
 .. |pypi| image:: https://badge.fury.io/py/tonellishanks.svg#
    :target: https://badge.fury.io/py/tonellishanks
@@ -13,6 +13,14 @@ Pure-Python implementation of the `Tonelli-Shanks algorithm <https://en.wikipedi
 .. |readthedocs| image:: https://readthedocs.org/projects/tonellishanks/badge/?version=latest
    :target: https://tonellishanks.readthedocs.io/en/latest/?badge=latest
    :alt: Read the Docs documentation status.
+
+.. |actions| image:: https://github.com/lapets/tonellishanks/workflows/lint-test-cover-docs/badge.svg#
+   :target: https://github.com/lapets/tonellishanks/actions/workflows/lint-test-cover-docs.yml
+   :alt: GitHub Actions status.
+
+.. |coveralls| image:: https://coveralls.io/repos/github/lapets/tonellishanks/badge.svg?branch=main
+   :target: https://coveralls.io/github/lapets/tonellishanks?branch=main
+   :alt: Coveralls test coverage summary.
 
 Purpose
 -------
