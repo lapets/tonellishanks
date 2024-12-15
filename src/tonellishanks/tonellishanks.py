@@ -18,10 +18,10 @@ def _legendre(a: int, p: int) -> int:
     """
     return pow(a, (p - 1) // 2, p)
 
-def tonellishanks(n: int, p: int) -> Optional[int]:
+def tonellishanks(integer: int, prime: int) -> Optional[int]:
     """
-    Return the least nonnegative residue modulo ``p`` that is the square root
-    of ``n`` modulo ``p`` (where ``p`` is a prime number).
+    Return the least nonnegative residue modulo ``prime`` that is the square root
+    of ``integer`` modulo ``prime`` (where ``prime`` is a prime number).
 
     >>> tonellishanks(4, 7)
     2
@@ -31,7 +31,7 @@ def tonellishanks(n: int, p: int) -> Optional[int]:
     True
 
     Integer inputs are always interpreted as representing the corresponding
-    least nonnegative residue modulo ``p``.
+    least nonnegative residue modulo ``prime``.
 
     >>> tonellishanks(9, 7)
     3
@@ -43,7 +43,7 @@ def tonellishanks(n: int, p: int) -> Optional[int]:
     0
 
     The result ``None`` is returned for inputs that are not a square modulo
-    ``p``.
+    ``prime``.
 
     >>> tonellishanks(3, 7) is None
     True
@@ -69,26 +69,26 @@ def tonellishanks(n: int, p: int) -> Optional[int]:
     `Tonelli-Shanks algorithm <https://rosettacode.org/wiki/Tonelli-Shanks_algorithm>`__
     on `Rosetta Code <https://rosettacode.org>`__.
     """
-    if not isinstance(n, int):
+    if not isinstance(integer, int):
         raise TypeError(
-            "'" + type(n).__name__ + "'" + ' object cannot be interpreted as an integer'
+            "'" + type(integer).__name__ + "'" + ' object cannot be interpreted as an integer'
         )
 
-    if not isinstance(p, int):
+    if not isinstance(prime, int):
         raise TypeError(
-            "'" + type(p).__name__ + "'" + ' object cannot be interpreted as an integer'
+            "'" + type(prime).__name__ + "'" + ' object cannot be interpreted as an integer'
         )
 
-    if p < 0:
+    if prime < 0:
         raise ValueError('prime modulus must be a positive integer')
 
-    if n == 0:
+    if integer == 0:
         return 0
 
-    if _legendre(n, p) != 1:
+    if _legendre(integer, prime) != 1:
         return None
 
-    odd = p - 1
+    odd = prime - 1
     exponent = 0
     while odd % 2 == 0:
         odd >>= 1
@@ -96,34 +96,34 @@ def tonellishanks(n: int, p: int) -> Optional[int]:
 
     # Use the explicit formula.
     if exponent == 1:
-        root = pow(n, (p + 1) // 4, p)
-        return min(root, p - root)
+        root = pow(integer, (prime + 1) // 4, prime)
+        return min(root, prime - root)
 
-    for z in range(2, p):
-        if p - 1 == _legendre(z, p):
+    for z in range(2, prime):
+        if prime - 1 == _legendre(z, prime):
             break
 
-    c = pow(z, odd, p)
-    root = pow(n, (odd + 1) // 2, p)
-    t = pow(n, odd, p)
+    c = pow(z, odd, prime)
+    root = pow(integer, (odd + 1) // 2, prime)
+    t = pow(integer, odd, prime)
 
     m = exponent
     t2 = 0
-    while (t - 1) % p != 0:
-        t2 = (t * t) % p
+    while (t - 1) % prime != 0:
+        t2 = (t * t) % prime
         for i in range(1, m):
-            if (t2 - 1) % p == 0:
+            if (t2 - 1) % prime == 0:
                 break
-            t2 = (t2 * t2) % p
+            t2 = (t2 * t2) % prime
 
-        b = pow(c, 1 << (m - i - 1), p)
+        b = pow(c, 1 << (m - i - 1), prime)
 
-        root = (root * b) % p
-        c = (b * b) % p
-        t = (t * c) % p
+        root = (root * b) % prime
+        c = (b * b) % prime
+        t = (t * c) % prime
         m = i
 
-    return min(root, p - root)
+    return min(root, prime - root)
 
 if __name__ == '__main__':
     doctest.testmod() # pragma: no cover
