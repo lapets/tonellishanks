@@ -1,6 +1,6 @@
 [project]
 name = "tonellishanks"
-version = "0.1.0"
+version = "0.1.1"
 description = """\
     Pure-Python implementation of the Tonelli–Shanks algorithm \
     for calculating a square root modulo a prime.\
@@ -11,7 +11,7 @@ authors = [
     {email = "a@lapets.io"}
 ]
 readme = "README.rst"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 
 [project.urls]
 Repository = "https://github.com/lapets/tonellishanks"
