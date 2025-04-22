@@ -20,8 +20,8 @@ def _legendre(a: int, p: int) -> int:
 
 def tonellishanks(integer: int, prime: int) -> Optional[int]:
     """
-    Return the least nonnegative residue modulo ``prime`` that is the square root
-    of ``integer`` modulo ``prime`` (where ``prime`` is a prime number).
+    Return the least nonnegative residue modulo ``prime`` that is the square
+    root of ``integer`` modulo ``prime`` (where ``prime`` is a prime number).
 
     >>> tonellishanks(4, 7)
     2
@@ -48,9 +48,9 @@ def tonellishanks(integer: int, prime: int) -> Optional[int]:
     >>> tonellishanks(3, 7) is None
     True
 
-    Any attempt to invoke this function with an argument that does not
-    have the expected types (or does not fall within the supported range)
-    raises an exception.
+    Any attempt to invoke this function with arguments that do not have the
+    expected types (or do not fall within the supported ranges) raises an
+    exception.
 
     >>> tonellishanks('abc', 19)
     Traceback (most recent call last):
